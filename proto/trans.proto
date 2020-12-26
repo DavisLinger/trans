@@ -14,14 +14,11 @@ message transportResp{
   string file_name = 1;
 }
 
-message batchTransReq{
-  repeated transportReq list = 1;
-}
 message batchTranResp{
   repeated  string file_name = 1;
 }
 
 service transport{
   rpc trans(transportReq)returns (transportResp);
-  rpc batchUpdate(batchTransReq)returns(batchTranResp);
+  rpc batchUpLoad(stream transportReq)returns(batchTranResp);
 }

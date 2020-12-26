@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"flag"
+	"github.com/DavisLinger/trans/cmd"
 	"io/ioutil"
 	"log"
 	"os"
@@ -12,10 +13,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	pb "github.com/DavisLinger/transport/proto"
+	pb "github.com/DavisLinger/trans/proto"
 )
 
-func main() {
+func main2() {
 	var server string
 	var file string
 	flag.StringVar(&server, "server", "127.0.0.1:39329", "服务器端口")
@@ -52,6 +53,9 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("传输完毕,文件名:", resp.FileName)
+}
+func main() {
+	cmd.Execute()
 }
 
 func getName(s string) string {

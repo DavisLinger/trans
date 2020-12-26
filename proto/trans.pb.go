@@ -139,53 +139,6 @@ func (x *TransportResp) GetFileName() string {
 	return ""
 }
 
-type BatchTransReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	List []*TransportReq `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"`
-}
-
-func (x *BatchTransReq) Reset() {
-	*x = BatchTransReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_trans_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *BatchTransReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BatchTransReq) ProtoMessage() {}
-
-func (x *BatchTransReq) ProtoReflect() protoreflect.Message {
-	mi := &file_trans_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BatchTransReq.ProtoReflect.Descriptor instead.
-func (*BatchTransReq) Descriptor() ([]byte, []int) {
-	return file_trans_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *BatchTransReq) GetList() []*TransportReq {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
 type BatchTranResp struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -197,7 +150,7 @@ type BatchTranResp struct {
 func (x *BatchTranResp) Reset() {
 	*x = BatchTranResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_trans_proto_msgTypes[3]
+		mi := &file_trans_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -210,7 +163,7 @@ func (x *BatchTranResp) String() string {
 func (*BatchTranResp) ProtoMessage() {}
 
 func (x *BatchTranResp) ProtoReflect() protoreflect.Message {
-	mi := &file_trans_proto_msgTypes[3]
+	mi := &file_trans_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -223,7 +176,7 @@ func (x *BatchTranResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchTranResp.ProtoReflect.Descriptor instead.
 func (*BatchTranResp) Descriptor() ([]byte, []int) {
-	return file_trans_proto_rawDescGZIP(), []int{3}
+	return file_trans_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BatchTranResp) GetFileName() []string {
@@ -246,24 +199,20 @@ var file_trans_proto_rawDesc = []byte{
 	0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x2c, 0x0a, 0x0d, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70,
 	0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x1b, 0x0a, 0x09, 0x66, 0x69, 0x6c, 0x65, 0x5f,
 	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x66, 0x69, 0x6c, 0x65,
-	0x4e, 0x61, 0x6d, 0x65, 0x22, 0x3c, 0x0a, 0x0d, 0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61,
-	0x6e, 0x73, 0x52, 0x65, 0x71, 0x12, 0x2b, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e,
-	0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71, 0x52, 0x04, 0x6c, 0x69,
-	0x73, 0x74, 0x22, 0x2c, 0x0a, 0x0d, 0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61, 0x6e, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x1b, 0x0a, 0x09, 0x66, 0x69, 0x6c, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x66, 0x69, 0x6c, 0x65, 0x4e, 0x61, 0x6d, 0x65,
-	0x32, 0x8a, 0x01, 0x0a, 0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x12, 0x3a,
-	0x0a, 0x05, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x12, 0x17, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70,
-	0x6f, 0x72, 0x74, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x71,
-	0x1a, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x74, 0x72, 0x61,
-	0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x41, 0x0a, 0x0b, 0x62, 0x61,
-	0x74, 0x63, 0x68, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e,
-	0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61, 0x6e, 0x73,
-	0x52, 0x65, 0x71, 0x1a, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e,
-	0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x42, 0x0b, 0x5a,
-	0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x4e, 0x61, 0x6d, 0x65, 0x22, 0x2c, 0x0a, 0x0d, 0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x1b, 0x0a, 0x09, 0x66, 0x69, 0x6c, 0x65, 0x5f, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x66, 0x69, 0x6c, 0x65, 0x4e, 0x61,
+	0x6d, 0x65, 0x32, 0x8b, 0x01, 0x0a, 0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74,
+	0x12, 0x3a, 0x0a, 0x05, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x12, 0x17, 0x2e, 0x74, 0x72, 0x61, 0x6e,
+	0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x52,
+	0x65, 0x71, 0x1a, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x74,
+	0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x42, 0x0a, 0x0b,
+	0x62, 0x61, 0x74, 0x63, 0x68, 0x55, 0x70, 0x4c, 0x6f, 0x61, 0x64, 0x12, 0x17, 0x2e, 0x74, 0x72,
+	0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72,
+	0x74, 0x52, 0x65, 0x71, 0x1a, 0x18, 0x2e, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74,
+	0x2e, 0x62, 0x61, 0x74, 0x63, 0x68, 0x54, 0x72, 0x61, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x28, 0x01,
+	0x42, 0x0b, 0x5a, 0x09, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x70, 0x6f, 0x72, 0x74, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -278,24 +227,22 @@ func file_trans_proto_rawDescGZIP() []byte {
 	return file_trans_proto_rawDescData
 }
 
-var file_trans_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_trans_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_trans_proto_goTypes = []interface{}{
 	(*TransportReq)(nil),  // 0: transport.transportReq
 	(*TransportResp)(nil), // 1: transport.transportResp
-	(*BatchTransReq)(nil), // 2: transport.batchTransReq
-	(*BatchTranResp)(nil), // 3: transport.batchTranResp
+	(*BatchTranResp)(nil), // 2: transport.batchTranResp
 }
 var file_trans_proto_depIdxs = []int32{
-	0, // 0: transport.batchTransReq.list:type_name -> transport.transportReq
-	0, // 1: transport.transport.trans:input_type -> transport.transportReq
-	2, // 2: transport.transport.batchUpdate:input_type -> transport.batchTransReq
-	1, // 3: transport.transport.trans:output_type -> transport.transportResp
-	3, // 4: transport.transport.batchUpdate:output_type -> transport.batchTranResp
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: transport.transport.trans:input_type -> transport.transportReq
+	0, // 1: transport.transport.batchUpLoad:input_type -> transport.transportReq
+	1, // 2: transport.transport.trans:output_type -> transport.transportResp
+	2, // 3: transport.transport.batchUpLoad:output_type -> transport.batchTranResp
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_trans_proto_init() }
@@ -329,18 +276,6 @@ func file_trans_proto_init() {
 			}
 		}
 		file_trans_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BatchTransReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_trans_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BatchTranResp); i {
 			case 0:
 				return &v.state
@@ -359,7 +294,7 @@ func file_trans_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_trans_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -386,7 +321,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TransportClient interface {
 	Trans(ctx context.Context, in *TransportReq, opts ...grpc.CallOption) (*TransportResp, error)
-	BatchUpdate(ctx context.Context, in *BatchTransReq, opts ...grpc.CallOption) (*BatchTranResp, error)
+	BatchUpLoad(ctx context.Context, opts ...grpc.CallOption) (Transport_BatchUpLoadClient, error)
 }
 
 type transportClient struct {
@@ -406,19 +341,44 @@ func (c *transportClient) Trans(ctx context.Context, in *TransportReq, opts ...g
 	return out, nil
 }
 
-func (c *transportClient) BatchUpdate(ctx context.Context, in *BatchTransReq, opts ...grpc.CallOption) (*BatchTranResp, error) {
-	out := new(BatchTranResp)
-	err := c.cc.Invoke(ctx, "/transport.transport/batchUpdate", in, out, opts...)
+func (c *transportClient) BatchUpLoad(ctx context.Context, opts ...grpc.CallOption) (Transport_BatchUpLoadClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Transport_serviceDesc.Streams[0], "/transport.transport/batchUpLoad", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &transportBatchUpLoadClient{stream}
+	return x, nil
+}
+
+type Transport_BatchUpLoadClient interface {
+	Send(*TransportReq) error
+	CloseAndRecv() (*BatchTranResp, error)
+	grpc.ClientStream
+}
+
+type transportBatchUpLoadClient struct {
+	grpc.ClientStream
+}
+
+func (x *transportBatchUpLoadClient) Send(m *TransportReq) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *transportBatchUpLoadClient) CloseAndRecv() (*BatchTranResp, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	m := new(BatchTranResp)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 // TransportServer is the server API for Transport service.
 type TransportServer interface {
 	Trans(context.Context, *TransportReq) (*TransportResp, error)
-	BatchUpdate(context.Context, *BatchTransReq) (*BatchTranResp, error)
+	BatchUpLoad(Transport_BatchUpLoadServer) error
 }
 
 // UnimplementedTransportServer can be embedded to have forward compatible implementations.
@@ -428,8 +388,8 @@ type UnimplementedTransportServer struct {
 func (*UnimplementedTransportServer) Trans(context.Context, *TransportReq) (*TransportResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Trans not implemented")
 }
-func (*UnimplementedTransportServer) BatchUpdate(context.Context, *BatchTransReq) (*BatchTranResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BatchUpdate not implemented")
+func (*UnimplementedTransportServer) BatchUpLoad(Transport_BatchUpLoadServer) error {
+	return status.Errorf(codes.Unimplemented, "method BatchUpLoad not implemented")
 }
 
 func RegisterTransportServer(s *grpc.Server, srv TransportServer) {
@@ -454,22 +414,30 @@ func _Transport_Trans_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Transport_BatchUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BatchTransReq)
-	if err := dec(in); err != nil {
+func _Transport_BatchUpLoad_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(TransportServer).BatchUpLoad(&transportBatchUpLoadServer{stream})
+}
+
+type Transport_BatchUpLoadServer interface {
+	SendAndClose(*BatchTranResp) error
+	Recv() (*TransportReq, error)
+	grpc.ServerStream
+}
+
+type transportBatchUpLoadServer struct {
+	grpc.ServerStream
+}
+
+func (x *transportBatchUpLoadServer) SendAndClose(m *BatchTranResp) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *transportBatchUpLoadServer) Recv() (*TransportReq, error) {
+	m := new(TransportReq)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
-	if interceptor == nil {
-		return srv.(TransportServer).BatchUpdate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/transport.transport/BatchUpdate",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TransportServer).BatchUpdate(ctx, req.(*BatchTransReq))
-	}
-	return interceptor(ctx, in, info, handler)
+	return m, nil
 }
 
 var _Transport_serviceDesc = grpc.ServiceDesc{
@@ -480,11 +448,13 @@ var _Transport_serviceDesc = grpc.ServiceDesc{
 			MethodName: "trans",
 			Handler:    _Transport_Trans_Handler,
 		},
+	},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "batchUpdate",
-			Handler:    _Transport_BatchUpdate_Handler,
+			StreamName:    "batchUpLoad",
+			Handler:       _Transport_BatchUpLoad_Handler,
+			ClientStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "trans.proto",
 }
