@@ -7,12 +7,11 @@ import (
 	"math"
 	"net"
 
-	"github.com/DavisLinger/transport/server/trans"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	pb "github.com/DavisLinger/transport/server/proto"
+	pb "github.com/DavisLinger/transport/proto"
 )
 
 func main() {

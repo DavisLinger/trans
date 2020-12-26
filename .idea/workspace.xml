@@ -11,15 +11,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be64df8a-98b9-49ee-a115-e1d08f62772d" name="默认的" comment="fix:init">
-      <change beforePath="$PROJECT_DIR$/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/proto/trans.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/proto/trans.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/proto/trans.proto" beforeDir="false" afterPath="$PROJECT_DIR$/client/proto/trans.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/trans.pb.go" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/MakeFile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/trans.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/proto/trans.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/proto/trans.proto" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proto/trans.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/trans.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/proto/trans.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/proto/trans.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/proto/trans.proto" beforeDir="false" afterPath="$PROJECT_DIR$/server/proto/trans.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/trans/trans.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/trans/trans.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/proto/trans.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/proto/trans.proto" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,34 +38,52 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../../../../Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GoDepProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
   <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
+    <option name="urls">
+      <list>
+        <option value="file://$PROJECT_DIR$/../../../.." />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1m5ltQfWnaV8nMYA0WWlnHu8hmk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable..is.expanded" value="false" />
+    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client" />
       <recent name="$PROJECT_DIR$/server" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\caicai\Documents\trans" />
     </key>
   </component>
   <component name="RunManager">
@@ -73,11 +96,6 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go 构建.go build github.com/DavisLinger/transport/server" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,36 +114,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fix:init" />
     <option name="LAST_COMMIT_MESSAGE" value="fix:init" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="640" y="339" key="#Go_模块" timestamp="1608793872259">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state x="640" y="339" key="#Go_模块/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608793872259" />
-    <state width="1638" height="373" key="GridCell.Tab.0.bottom" timestamp="1608795462109">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state width="1638" height="373" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608795462109" />
-    <state width="1638" height="373" key="GridCell.Tab.0.center" timestamp="1608795462108">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state width="1638" height="373" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608795462108" />
-    <state width="1638" height="373" key="GridCell.Tab.0.left" timestamp="1608795462107">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state width="1638" height="373" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608795462107" />
-    <state width="1638" height="373" key="GridCell.Tab.0.right" timestamp="1608795462109">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state width="1638" height="373" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608795462109" />
-    <state x="670" y="268" key="refactoring.ChangeSignatureDialog" timestamp="1608796056169">
-      <screen x="0" y="23" width="1680" height="952" />
-    </state>
-    <state x="670" y="268" key="refactoring.ChangeSignatureDialog/1680.23.1920.1057/0.23.1680.952@0.23.1680.952" timestamp="1608796056169" />
   </component>
 </project>

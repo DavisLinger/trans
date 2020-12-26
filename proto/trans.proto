@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package transport;
 
+//option go_package = "transport";
 option go_package = "transport";
-
 message transportReq{
   string file_name = 1;
   int64 file_size = 2;
@@ -14,6 +14,14 @@ message transportResp{
   string file_name = 1;
 }
 
+message batchTransReq{
+  repeated transportReq list = 1;
+}
+message batchTranResp{
+  repeated  string file_name = 1;
+}
+
 service transport{
   rpc trans(transportReq)returns (transportResp);
+  rpc batchUpdate(batchTransReq)returns(batchTranResp);
 }

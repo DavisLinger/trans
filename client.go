@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
-	pb "github.com/DavisLinger/transport/client/proto"
+	pb "github.com/DavisLinger/transport/proto"
 )
 
 func main() {
