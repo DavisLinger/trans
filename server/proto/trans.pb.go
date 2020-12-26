@@ -11,8 +11,6 @@ import (
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	math "math"
-
-	"github.com/DavisLinger/transport/server/trans"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -128,17 +126,17 @@ func init() {
 func init() { proto.RegisterFile("trans.proto", fileDescriptor_afbc80efa276a497) }
 
 var fileDescriptor_afbc80efa276a497 = []byte{
-	// 160 bytes of a gzipped FileDescriptorProto
+	// 158 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0x29, 0x4a, 0xcc,
 	0x2b, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x04, 0x73, 0x0a, 0xf2, 0x8b, 0x4a, 0x94,
 	0x62, 0xb8, 0x78, 0xe0, 0x9c, 0xa0, 0xd4, 0x42, 0x21, 0x69, 0x2e, 0xce, 0xb4, 0xcc, 0x9c, 0xd4,
 	0xf8, 0xbc, 0xc4, 0xdc, 0x54, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x0e, 0x90, 0x80, 0x5f,
 	0x62, 0x6e, 0x2a, 0x5c, 0xb2, 0x38, 0xb3, 0x2a, 0x55, 0x82, 0x49, 0x81, 0x51, 0x83, 0x19, 0x22,
 	0x19, 0x9c, 0x59, 0x95, 0x2a, 0x24, 0xc4, 0xc5, 0x92, 0x92, 0x58, 0x92, 0x28, 0xc1, 0x0c, 0xd6,
-	0x04, 0x66, 0x2b, 0xe9, 0x70, 0xf1, 0x22, 0x99, 0x5e, 0x5c, 0x80, 0xd7, 0x78, 0x23, 0x4f, 0x2e,
-	0x84, 0xc3, 0x84, 0x6c, 0xb8, 0x58, 0xc1, 0x1c, 0x21, 0x71, 0x3d, 0xb8, 0xa0, 0x1e, 0xb2, 0x53,
-	0xa5, 0x24, 0xb0, 0x4b, 0x14, 0x17, 0x68, 0x30, 0x3a, 0x71, 0x47, 0x21, 0x8c, 0x4a, 0x62, 0x03,
-	0xfb, 0xda, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x11, 0xf6, 0x85, 0x1a, 0x04, 0x01, 0x00, 0x00,
+	0x04, 0x66, 0x2b, 0xe9, 0x70, 0xf1, 0x22, 0x99, 0x5e, 0x5c, 0x80, 0xd7, 0x78, 0x23, 0x77, 0x2e,
+	0x84, 0xc3, 0x84, 0xac, 0xb8, 0x58, 0xc1, 0x1c, 0x21, 0x71, 0x3d, 0xb8, 0xa0, 0x1e, 0xb2, 0x53,
+	0xa5, 0x24, 0xb0, 0x4b, 0x14, 0x17, 0x38, 0x71, 0x47, 0x21, 0x0c, 0x4a, 0x62, 0x03, 0xfb, 0xd9,
+	0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x16, 0x43, 0xf4, 0xf3, 0x02, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -153,7 +151,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type TransportClient interface {
-	Trans(ctx context.Context, opts ...grpc.CallOption) (Transport_TransClient, error)
+	Trans(ctx context.Context, in *TransportReq, opts ...grpc.CallOption) (*TransportResp, error)
 }
 
 type transportClient struct {
@@ -164,93 +162,59 @@ func NewTransportClient(cc *grpc.ClientConn) TransportClient {
 	return &transportClient{cc}
 }
 
-func (c *transportClient) Trans(ctx context.Context, opts ...grpc.CallOption) (Transport_TransClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Transport_serviceDesc.Streams[0], "/transport.transport/trans", opts...)
+func (c *transportClient) Trans(ctx context.Context, in *TransportReq, opts ...grpc.CallOption) (*TransportResp, error) {
+	out := new(TransportResp)
+	err := c.cc.Invoke(ctx, "/transport.transport/trans", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &transportTransClient{stream}
-	return x, nil
-}
-
-type Transport_TransClient interface {
-	Send(*TransportReq) error
-	CloseAndRecv() (*TransportResp, error)
-	grpc.ClientStream
-}
-
-type transportTransClient struct {
-	grpc.ClientStream
-}
-
-func (x *transportTransClient) Send(m *TransportReq) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *transportTransClient) CloseAndRecv() (*TransportResp, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(TransportResp)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	return out, nil
 }
 
 // TransportServer is the server API for Transport service.
 type TransportServer interface {
-	Trans(Transport_TransServer) error
+	Trans(context.Context, *TransportReq) (*TransportResp, error)
 }
 
 // UnimplementedTransportServer can be embedded to have forward compatible implementations.
 type UnimplementedTransportServer struct {
 }
 
-func (*UnimplementedTransportServer) Trans(srv Transport_TransServer) error {
-	return status.Errorf(codes.Unimplemented, "method Trans not implemented")
+func (*UnimplementedTransportServer) Trans(ctx context.Context, req *TransportReq) (*TransportResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Trans not implemented")
 }
 
-func RegisterTransportServer(s *grpc.Server, srv *trans.TranSrv) {
+func RegisterTransportServer(s *grpc.Server, srv TransportServer) {
 	s.RegisterService(&_Transport_serviceDesc, srv)
 }
 
-func _Transport_Trans_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(TransportServer).Trans(&transportTransServer{stream})
-}
-
-type Transport_TransServer interface {
-	SendAndClose(*TransportResp) error
-	Recv() (*TransportReq, error)
-	grpc.ServerStream
-}
-
-type transportTransServer struct {
-	grpc.ServerStream
-}
-
-func (x *transportTransServer) SendAndClose(m *TransportResp) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *transportTransServer) Recv() (*TransportReq, error) {
-	m := new(TransportReq)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
+func _Transport_Trans_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransportReq)
+	if err := dec(in); err != nil {
 		return nil, err
 	}
-	return m, nil
+	if interceptor == nil {
+		return srv.(TransportServer).Trans(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/transport.transport/Trans",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TransportServer).Trans(ctx, req.(*TransportReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 var _Transport_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "transport.transport",
 	HandlerType: (*TransportServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams: []grpc.StreamDesc{
+	Methods: []grpc.MethodDesc{
 		{
-			StreamName:    "trans",
-			Handler:       _Transport_Trans_Handler,
-			ClientStreams: true,
+			MethodName: "trans",
+			Handler:    _Transport_Trans_Handler,
 		},
 	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "trans.proto",
 }

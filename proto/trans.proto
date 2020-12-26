@@ -15,5 +15,5 @@ message transportResp{
 }
 
 service transport{
-  rpc trans(stream transportReq)returns (transportResp);
+  rpc trans(transportReq)returns (transportResp);
 }
