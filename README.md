@@ -83,3 +83,8 @@ eg:
 ```shell
 ./client -server 127.0.0.1::39329 -type folder -sign ./keys/server.pem -path ~/Projects/TodoApi
 ```
+
+## Todo
+
+- 优化文件夹模式传输
+- 支持下载传输(单个及批量)
