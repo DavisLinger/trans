@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/DavisLinger/trans/server/trans"
 	"log"
 	"math"
 	"net"
@@ -12,6 +11,7 @@ import (
 	"google.golang.org/grpc/credentials"
 
 	pb "github.com/DavisLinger/trans/proto"
+	"github.com/DavisLinger/trans/trans"
 )
 
 func main() {
@@ -33,7 +33,8 @@ func main() {
 	if err != nil {
 		log.Fatal("加载证书失败,err:", err)
 	}
-	engine := grpc.NewServer(grpc.Creds(cre), grpc.MaxSendMsgSize(math.MaxInt32), grpc.MaxRecvMsgSize(math.MaxInt32))
+	var engine *grpc.Server
+	engine = grpc.NewServer(grpc.Creds(cre), grpc.MaxSendMsgSize(math.MaxInt32), grpc.MaxRecvMsgSize(math.MaxInt32))
 	pb.RegisterTransportServer(engine, new(trans.TranSrv))
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%v", port))
 	if err != nil {

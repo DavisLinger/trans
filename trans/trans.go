@@ -29,7 +29,8 @@ func (t TranSrv) BatchUpLoad(stream pb.Transport_BatchUpLoadServer) error {
 				return err
 			}
 		}
-		log.Printf("stream index:%v,file_name:%v", index, req.FileName)
+		log.Printf("stream receive index:%v,file_name:%v", index, req.FileName)
+		index++
 		path, err := t.writeFile(req)
 		if err != nil {
 			return err
