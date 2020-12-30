@@ -4,14 +4,13 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"net"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 
 	pb "github.com/DavisLinger/trans/proto"
-	"github.com/DavisLinger/trans/trans"
+	"github.com/DavisLinger/trans/service"
 )
 
 func main() {
@@ -34,8 +33,10 @@ func main() {
 		log.Fatal("加载证书失败,err:", err)
 	}
 	var engine *grpc.Server
-	engine = grpc.NewServer(grpc.Creds(cre), grpc.MaxSendMsgSize(math.MaxInt32), grpc.MaxRecvMsgSize(math.MaxInt32))
-	pb.RegisterTransportServer(engine, new(trans.TranSrv))
+	// 8<<40 means 8GB size
+	// 8<<40 == 8*1024*1024*1024*1024
+	engine = grpc.NewServer(grpc.Creds(cre), grpc.MaxSendMsgSize(8<<40), grpc.MaxRecvMsgSize(8<<40))
+	pb.RegisterTransportServer(engine, new(service.TranSrv))
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%v", port))
 	if err != nil {
 		log.Fatal(err)
