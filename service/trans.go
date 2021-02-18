@@ -61,6 +61,7 @@ func (t TranSrv) writeFile(req *pb.TransportReq) (string, error) {
 		pre = `/`
 	}
 	path := pwd + pre + req.FileName
+	log.Println("write file:",path)
 	file, err := os.Create(path)
 	if err != nil {
 		return "", err
